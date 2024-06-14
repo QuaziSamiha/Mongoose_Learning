@@ -1,4 +1,6 @@
 {
+  "include": ["src"], // which files to compile (14.06.24)
+  "exclude": ["node_modules"], // which files to skip (14.06.24)
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
