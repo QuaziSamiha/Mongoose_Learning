@@ -13,4 +13,7 @@ router.post('/create-student', StudentContollers.createStudent);
 router.get('/', StudentContollers.getAllStudents);
 // http://localhost:5000/api/v1/students
 
+router.get('/:studentId', StudentContollers.getSingleStudent);
+// http://localhost:5000/api/v1/students/123456
+
 export const StudentRoutes = router;
