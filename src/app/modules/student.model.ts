@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import {
   Gaurdian,
   LocalGaurdian,
@@ -52,3 +52,5 @@ const studentSchema = new Schema<Student>({
   profileImg: { type: String },
   isActive: ['active', 'blocked'], // enum
 });
+
+const Student = model<Student>('Student', studentSchema);
