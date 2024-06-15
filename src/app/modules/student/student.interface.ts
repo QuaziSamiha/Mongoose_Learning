@@ -1,12 +1,29 @@
-// 1. Create an interface representing a document in MongoDB.
+export type Gaurdian = {
+  fatherName: string;
+  fatherOccupation: string;
+  fatherContactNo: string;
+  motherName: string;
+  motherOccupation: string;
+  motherContactNo: string;
+};
+
+export type UserName = {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+};
+
+export type LocalGaurdian = {
+  name: string;
+  occupation: string;
+  contactNo: string;
+  address: string;
+};
+
 export type Student = {
   id: string;
-  name: {
-    firstName: string;
-    middleName: string;
-    lastName: string;
-  };
-  gender: 'male' | 'female'; // union type
+  name: UserName;
+  gender: 'male' | 'female'; // union type literal
   dateOfBirth: string;
   email: string;
   contactNo: string;
@@ -14,12 +31,8 @@ export type Student = {
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
   permanentAddress: string;
-  gaurdian: {
-    fatherName: string;
-    fatherOccupation: string;
-    fatherContactNo: string;
-    motherName: string;
-    motherOccupation: string;
-    motherContactNo: string;
-  };
+  gaurdian: Gaurdian;
+  localGaurdian: LocalGaurdian;
+  profileImg?: string;
+  isActive: 'active' | 'inactive';
 };
