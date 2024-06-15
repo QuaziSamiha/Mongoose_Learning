@@ -53,4 +53,4 @@ const studentSchema = new Schema<Student>({
   isActive: ['active', 'blocked'], // enum
 });
 
-const Student = model<Student>('Student', studentSchema);
+export const StudentModel = model<Student>('Student', studentSchema);
