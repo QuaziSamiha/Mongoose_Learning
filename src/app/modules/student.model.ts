@@ -16,7 +16,8 @@ const userNameSchema = new Schema<UserName>({
     trim: true, // remove extra spaces
     maxlength: [20, 'Max allowed length is 20'], // custom message (optinal)
     validate: function (value: string) {
-      console.log(value);
+      const firstNameStr = value.charAt(0).toUpperCase() + value.slice(1);
+      return firstNameStr === value;
     },
   },
   middleName: {
