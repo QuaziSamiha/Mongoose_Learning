@@ -10,6 +10,7 @@ import {
 const userNameSchema = new Schema<UserName>({
   firstName: {
     type: String,
+    // built in validation of mongoose
     required: [true, 'First name is required'], // custom message
   },
   middleName: {
@@ -17,6 +18,7 @@ const userNameSchema = new Schema<UserName>({
   },
   lastName: {
     type: String,
+    // built in validation of mongoose
     required: [true, 'Last name is required'], // custom message
   },
 });
@@ -38,7 +40,7 @@ const localGaurdianSchema = new Schema<LocalGaurdian>({
 });
 
 const studentSchema = new Schema<Student>({
-  id: { type: String },
+  id: { type: String, required: true, unique: true }, // built in validation of mongoose
   // built in validation of mongoose
   name: {
     type: userNameSchema,
@@ -47,17 +49,23 @@ const studentSchema = new Schema<Student>({
   // enum (built in validation of mongoose)
   gender: {
     type: String,
-    enum: ['male', 'female', 'other'],
+    enum: {
+      values: ['male', 'female', 'other'],
+      message: "Gender only can be 'male' or 'female' or 'other'", // adding custom message
+    },
     required: true,
   },
   dateOfBirth: { type: String },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true }, // built in validation of mongoose
   contactNo: { type: String, required: true },
   emergencyContactNo: { type: String, required: true },
-  // enum
+  // built in validation of mongoose (enum)
   bloodGroup: {
     type: String,
-    enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+    enum: {
+      values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+      message: '{VALUE} is not valid', // 'VALUE' gives the value tried to insert
+    },
   },
   presentAddress: { type: String, required: true },
   permanentAddress: { type: String, required: true },
@@ -72,7 +80,7 @@ const studentSchema = new Schema<Student>({
     required: true,
   },
   profileImg: { type: String },
-  // enum
+  // built in validation of mongoose (enum)
   isActive: {
     type: String,
     enum: ['active', 'blocked'],
