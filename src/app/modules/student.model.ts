@@ -1,3 +1,4 @@
+// 18 , 21 May, 2024
 // 15, 16 June, 2024
 import { Schema, model } from 'mongoose';
 import {
@@ -12,6 +13,8 @@ const userNameSchema = new Schema<UserName>({
     type: String,
     // built in validation of mongoose
     required: [true, 'First name is required'], // custom message
+    trim: true, // remove extra spaces
+    maxlength: [20, 'Max allowed length is 20'], // custom message (optinal)
   },
   middleName: {
     type: String,
