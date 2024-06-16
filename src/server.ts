@@ -3,14 +3,6 @@ import config from './app/config';
 import mongoose from 'mongoose';
 // link - https://mongoosejs.com/
 
-// async function main() {
-//   await mongoose.connect(config.database_url as string);
-// }
-
-// app.listen(config.port, () => {
-//   console.log(`Example app listening on port ${config.port}`);
-// });
-
 async function main() {
   try {
     await mongoose.connect(config.database_url as string);
