@@ -15,9 +15,12 @@ const userNameSchema = new Schema<UserName>({
     required: [true, 'First name is required'], // custom message
     trim: true, // remove extra spaces
     maxlength: [20, 'Max allowed length is 20'], // custom message (optinal)
-    validate: function (value: string) {
-      const firstNameStr = value.charAt(0).toUpperCase() + value.slice(1);
-      return firstNameStr === value;
+    validate: {
+      validator: function (value: string) {
+        const firstNameStr = value.charAt(0).toUpperCase() + value.slice(1);
+        return firstNameStr === value;
+      },
+      message: '{VALUE} is not in capitalize format',
     },
   },
   middleName: {
